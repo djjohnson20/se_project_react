@@ -4,5 +4,14 @@
   font-size: 20px;
   line-height: 24.8px;
   margin: 0;
-  padding-top: 40px;
+  padding: 40px 0 34px;
+}
+
+.cards__list {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  gap: 20px;
 }
