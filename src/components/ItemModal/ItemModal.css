@@ -1,0 +1,46 @@
+.modal__content_type_image {
+  max-width: 498px;
+  max-height: 610px;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  padding: 0;
+}
+
+.modal__image {
+  height: 100%;
+  width: 100%;
+  max-width: 498px;
+  max-height: 498px;
+  object-fit: cover;
+}
+
+.modal__footer {
+  padding-left: 32px;
+}
+
+.modal__close_type_image {
+  background-image: url(../../assets/closebuttonlight.png);
+  background-color: transparent;
+  border: none;
+  top: 24px;
+  right: 24px;
+}
+
+.modal__caption {
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  margin: 0;
+  padding-top: 20px;
+  padding-bottom: 12px;
+}
+
+.modal__weather {
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  margin: 0;
+}
