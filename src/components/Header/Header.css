@@ -8,10 +8,17 @@
   margin-right: 24px;
 }
 
+.header__controls {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  gap: 20px;
+}
+
 .header__date-and-location {
   margin: 0;
   padding-top: 10px;
-  font-family: "CabinetGrotesk", sans-serif;
+  font-family: "Cabinet Grotesk", sans-serif;
   font-weight: 700;
   font-size: 20px;
   line-height: 24px;
@@ -21,7 +28,7 @@
   margin: 0 20px 0 auto;
   background-color: #f3f3f3;
   border-style: none;
-  font-family: "CabinetGrotesk", sans-serif;
+  font-family: "Cabinet Grotesk", sans-serif;
   font-weight: 700;
   font-size: 20px;
   line-height: 24px;
@@ -36,7 +43,7 @@
 
 .header__username {
   margin: 0;
-  font-family: "CabinetGrotesk", sans-serif;
+  font-family: "Cabinet Grotesk", sans-serif;
   color: #000000;
   font-weight: 700;
   font-size: 20px;
