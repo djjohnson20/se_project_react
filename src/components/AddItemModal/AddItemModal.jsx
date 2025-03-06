@@ -1,12 +1,12 @@
 import "./AddItemModal.css";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-function AddItemModal(onClose, isOpen) {
+function AddItemModal({ onClose, isOpen }) {
   return (
     <ModalWithForm
       title="New garment"
       buttonText="Add garment"
-      onClick={onClose}
+      onClose={onClose}
       isOpen={isOpen}
     >
       <label htmlFor="name" className="modal__label">
