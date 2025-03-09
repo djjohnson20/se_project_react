@@ -17,6 +17,27 @@
 
 .modal__footer {
   padding-left: 32px;
+  padding-bottom: 68px;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal__delete {
+  position: absolute;
+  bottom: 68px;
+  right: 32px;
+}
+
+.modal__delete-btn {
+  border-style: none;
+  background-color: #fff;
+  padding: 0;
+  color: #ff4d00;
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  cursor: pointer;
 }
 
 .modal__close_type_image {

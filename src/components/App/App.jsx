@@ -12,6 +12,7 @@ import Footer from "../Footer/Footer";
 import { defaultClothingItems } from "../../utils/constants";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
+import { getItems } from "../../utils/api";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -48,6 +49,14 @@ function App() {
     setClothingItems([{ name, link: imageUrl, weather }, ...clothingItems]);
     closeActiveModal();
   };
+
+  useEffect(() => {
+    getItems()
+      .then((data) => {
+        console.log(data);
+      })
+      .catch(console.error);
+  }, []);
 
   useEffect(() => {
     getWeather(coordinates, APIkey)
