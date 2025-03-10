@@ -26,7 +26,6 @@
 
 .clothes-section__list {
   display: flex;
-  justify-content: end;
   flex-wrap: wrap;
   margin: 0;
   padding: 0;

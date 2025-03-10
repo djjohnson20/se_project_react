@@ -1,6 +1,7 @@
 .sidebar {
   display: flex;
   flex-direction: row;
+  width: 229px;
 }
 
 .sidebar__username {
@@ -8,6 +9,8 @@
   font-weight: 700;
   font-size: 20px;
   align-self: center;
+  margin: 0;
+  padding-left: 16px;
 }
 
 .sidebar__avatar {
