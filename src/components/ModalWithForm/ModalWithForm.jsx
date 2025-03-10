@@ -18,7 +18,6 @@ function ModalWithForm({
           className="modal__close"
         ></button>
         <form onSubmit={onSubmit} className="modal__form">
-          {/* Need to fetch api POST to add card when I hit submit */}
           {children}
           <button type="submit" className="modal__submit">
             {buttonText}

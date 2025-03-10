@@ -12,7 +12,14 @@
 }
 
 .delete__modal-caption {
-  width: 367px;
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  margin: 0;
+}
+
+.delete__modal-caption-confirmation {
   font-family: "Cabinet Grotesk", sans-serif;
   font-weight: 700;
   font-size: 20px;
@@ -42,5 +49,6 @@
   font-weight: 700;
   font-size: 20px;
   line-height: 24px;
-  gap: 24px;
+  padding-bottom: 24px;
+  margin: 0;
 }
