@@ -110,6 +110,7 @@ function App() {
           card={selectedCard}
           onClose={closeActiveModal}
         />
+        <DeleteConfirmationModal activeModal={activeModal} />
       </div>
     </CurrentTemperatureUnitContext.Provider>
   );

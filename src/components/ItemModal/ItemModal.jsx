@@ -14,7 +14,10 @@ function ItemModal({ activeModal, onClose, card }) {
           <h2 className="modal__caption">{card.name}</h2>
           <p className="modal__weather">Weather: {card.weather}</p>
           <div className="modal__delete">
-            <button className="modal__delete-btn">Delete item</button>
+            <button type="button" className="modal__delete-btn">
+              Delete item
+            </button>
+            {/* Need to make button open DeleteConfirmationModal when clicked */}
           </div>
         </div>
       </div>
