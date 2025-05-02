@@ -45,7 +45,7 @@ function RegisterModal({ onClose, isOpen, onRegister, onLogin }) {
       buttonText="Next"
       onClose={onClose}
       isOpen={isOpen}
-      onRegister={handleSubmit}
+      onSubmit={handleSubmit}
     >
       <label htmlFor="email" className="modal__label">
         Email{" "}
