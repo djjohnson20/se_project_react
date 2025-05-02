@@ -100,6 +100,9 @@ function RegisterModal({ onClose, isOpen, onRegister, onLogin }) {
         />
       </label>
       <div className="modal__buttons-container">
+        <button type="submit" className="modal__submit-sign-up">
+          Next
+        </button>
         <button type="button" className="modal__login-button" onClick={onLogin}>
           or Log in
         </button>
