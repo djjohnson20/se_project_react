@@ -8,6 +8,7 @@ import Main from "../Main/Main";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import ItemModal from "../ItemModal/ItemModal";
 import DeleteConfirmationModal from "../DeleteConfirmationModal/DeleteConfirmationModal";
+import RegisterModal from "../RegisterModal/RegisterModal";
 import Profile from "../Profile/Profile";
 import Footer from "../Footer/Footer";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
@@ -43,6 +44,14 @@ function App() {
 
   const handleDeleteClick = () => {
     setActiveModal("delete");
+  };
+
+  const handleRegisterClick = () => {
+    setActiveModal("register");
+  };
+
+  const handleLoginClick = () => {
+    setActiveModal("login");
   };
 
   const closeActiveModal = () => {
@@ -91,7 +100,11 @@ function App() {
     >
       <div className="page">
         <div className="page__content">
-          <Header handleAddClick={handleAddClick} weatherData={weatherData} />
+          <Header
+            handleAddClick={handleAddClick}
+            weatherData={weatherData}
+            handleRegisterClick={handleRegisterClick}
+          />
           <Routes>
             <Route
               path="/"
@@ -134,6 +147,13 @@ function App() {
           card={selectedCard}
           onClose={closeActiveModal}
           handleCardDelete={handleCardDelete}
+        />
+        <RegisterModal
+          activeModal={activeModal}
+          isOpen={activeModal === "register"}
+          onClose={closeActiveModal}
+          onLogin={handleLoginClick}
+          onRegister={handleRegisterClick}
         />
       </div>
     </CurrentTemperatureUnitContext.Provider>

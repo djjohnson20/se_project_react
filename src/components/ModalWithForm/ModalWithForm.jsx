@@ -2,11 +2,11 @@ import "./ModalWithForm.css";
 
 function ModalWithForm({
   children,
-  buttonText,
   title,
   isOpen,
   onClose,
   onSubmit,
+  buttonText,
 }) {
   return (
     <div className={`modal ${isOpen && "modal_opened"}`}>
