@@ -161,6 +161,7 @@ function App() {
           activeModal={activeModal}
           isOpen={activeModal === "login"}
           onClose={closeActiveModal}
+          onRegister={handleRegisterClick}
           onLogin={() => {}}
         />
       </div>

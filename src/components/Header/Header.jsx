@@ -33,13 +33,6 @@ function Header({
         >
           + Add Clothes
         </button>
-        <button
-          onClick={handleLoginClick}
-          type="button"
-          className="header__add-clothes-btn"
-        >
-          Log in (Test)
-        </button>
       </div>
       <Link to="/profile" className="header__link">
         <div className="header__user-container">
