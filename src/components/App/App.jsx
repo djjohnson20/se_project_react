@@ -9,6 +9,7 @@ import AddItemModal from "../AddItemModal/AddItemModal";
 import ItemModal from "../ItemModal/ItemModal";
 import DeleteConfirmationModal from "../DeleteConfirmationModal/DeleteConfirmationModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
+import LoginModal from "../LoginModal/LoginModal";
 import Profile from "../Profile/Profile";
 import Footer from "../Footer/Footer";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
@@ -104,6 +105,7 @@ function App() {
             handleAddClick={handleAddClick}
             weatherData={weatherData}
             handleRegisterClick={handleRegisterClick}
+            handleLoginClick={handleLoginClick}
           />
           <Routes>
             <Route
@@ -154,6 +156,12 @@ function App() {
           onClose={closeActiveModal}
           onLogin={handleLoginClick}
           onRegister={handleRegisterClick}
+        />
+        <LoginModal
+          activeModal={activeModal}
+          isOpen={activeModal === "login"}
+          onClose={closeActiveModal}
+          onLogin={() => {}}
         />
       </div>
     </CurrentTemperatureUnitContext.Provider>
