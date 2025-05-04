@@ -1,7 +1,13 @@
 const baseUrl = "http://localhost:3001";
 
 function checkRes(res) {
-  return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
+  return res.json().then((data) => {
+    if (res.ok) {
+      return data;
+    } else {
+      return Promise.reject(data);
+    }
+  });
 }
 
 function signup({ name, avatarUrl, email, password }) {
@@ -10,7 +16,12 @@ function signup({ name, avatarUrl, email, password }) {
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ name, avatarUrl, email, password }),
+    body: JSON.stringify({
+      name: name,
+      avatar: avatarUrl,
+      email: email,
+      password: password,
+    }),
   }).then(checkRes);
 }
 

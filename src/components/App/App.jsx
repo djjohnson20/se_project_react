@@ -13,6 +13,7 @@ import RegisterModal from "../RegisterModal/RegisterModal";
 import LoginModal from "../LoginModal/LoginModal";
 import Profile from "../Profile/Profile";
 import Footer from "../Footer/Footer";
+import { signin, signup, checkRes } from "../../utils/auth";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import { getItems, addItem, deleteCard } from "../../utils/api";
@@ -80,14 +81,36 @@ function App() {
       .catch(console.error);
   };
 
+  const handleRegister = ({ name, avatarUrl, email, password }) => {
+    return signup({ name, avatarUrl, email, password })
+      .then((res) => {
+        localStorage.setItem("jwt", res.token);
+        setIsLoggedIn(true);
+        closeActiveModal();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   const handleLogin = ({ email, password }) => {
-    return new Promise((resolve) => {
-      setIsLoggedIn(true);
-      resolve();
-    });
+    return signin({ email, password })
+      .then((res) => {
+        if (res.token) {
+          localStorage.setItem("jwt", res.token);
+          setIsLoggedIn(true);
+          closeActiveModal();
+        } else {
+          console.log("No token received");
+        }
+      })
+      .catch((err) => {
+        console.log("Login error:", err);
+      });
   };
 
   const handleLogout = () => {
+    localStorage.removeItem("jwt");
     setIsLoggedIn(false);
   };
 
@@ -106,6 +129,13 @@ function App() {
         setWeatherData(filteredData);
       })
       .catch(console.error);
+  }, []);
+
+  useEffect(() => {
+    const token = localStorage.getItem("jwt");
+    if (token) {
+      setIsLoggedIn(true);
+    }
   }, []);
 
   return (
@@ -172,7 +202,7 @@ function App() {
           isOpen={activeModal === "register"}
           onClose={closeActiveModal}
           onLogin={handleLoginClick}
-          onRegister={handleRegisterClick}
+          onRegister={handleRegister}
         />
         <LoginModal
           activeModal={activeModal}

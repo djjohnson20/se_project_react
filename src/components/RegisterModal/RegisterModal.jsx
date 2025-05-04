@@ -32,9 +32,9 @@ function RegisterModal({ onClose, isOpen, onRegister, onLogin }) {
 
   const hasFormContent = () => {
     return (
-      email.length > 0 ||
-      password.length > 0 ||
-      name.length > 0 ||
+      email.length > 0 &&
+      password.length > 0 &&
+      name.length > 0 &&
       avatarUrl.length > 0
     );
   };
