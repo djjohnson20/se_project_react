@@ -17,7 +17,13 @@ function LoginModal({ onClose, isOpen, onLogin, onRegister }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onLogin({ email, password });
+    onLogin({ email, password })
+      .then(() => {
+        onClose();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   const hasFormContent = () => {

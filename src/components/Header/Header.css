@@ -40,6 +40,37 @@
   cursor: pointer;
 }
 
+.header__sign-in-btn {
+  margin: 0 20px 0 auto;
+  background-color: #f3f3f3;
+  border-style: none;
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  cursor: pointer;
+}
+
+.header__sign-up-btn {
+  background-color: #f3f3f3;
+  border-style: none;
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  cursor: pointer;
+}
+
+.header__logout-btn {
+  background-color: #f3f3f3;
+  border-style: none;
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  cursor: pointer;
+}
+
 .header__user-container {
   display: flex;
   align-items: center;

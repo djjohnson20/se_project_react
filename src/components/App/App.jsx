@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 
 import "./App.css";
 import { coordinates, APIkey } from "../../utils/constants";
+import ProtectedRoute from "../ProtectedRoute";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import AddItemModal from "../AddItemModal/AddItemModal";
@@ -29,6 +30,7 @@ function App() {
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const handleToggleSwitchChange = () => {
     setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
@@ -78,6 +80,17 @@ function App() {
       .catch(console.error);
   };
 
+  const handleLogin = ({ email, password }) => {
+    return new Promise((resolve) => {
+      setIsLoggedIn(true);
+      resolve();
+    });
+  };
+
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+  };
+
   useEffect(() => {
     getItems()
       .then((data) => {
@@ -106,6 +119,8 @@ function App() {
             weatherData={weatherData}
             handleRegisterClick={handleRegisterClick}
             handleLoginClick={handleLoginClick}
+            isLoggedIn={isLoggedIn}
+            handleLogout={handleLogout}
           />
           <Routes>
             <Route
@@ -121,11 +136,13 @@ function App() {
             <Route
               path="/profile"
               element={
-                <Profile
-                  clothingItems={clothingItems}
-                  handleCardClick={handleCardClick}
-                  handleAddClick={handleAddClick}
-                />
+                <ProtectedRoute isLoggedIn={isLoggedIn}>
+                  <Profile
+                    clothingItems={clothingItems}
+                    handleCardClick={handleCardClick}
+                    handleAddClick={handleAddClick}
+                  />
+                </ProtectedRoute>
               }
             />
           </Routes>
@@ -162,7 +179,7 @@ function App() {
           isOpen={activeModal === "login"}
           onClose={closeActiveModal}
           onRegister={handleRegisterClick}
-          onLogin={() => {}}
+          onLogin={handleLogin}
         />
       </div>
     </CurrentTemperatureUnitContext.Provider>
