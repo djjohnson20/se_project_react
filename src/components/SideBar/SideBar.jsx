@@ -9,10 +9,10 @@ function SideBar() {
 
   return (
     <div className="sidebar">
-      <img
-        className="sidebar__avatar"
-        src={currentUser.avatar}
-        alt={currentUser.avatar}
+      <UserAvatar
+        avatar={currentUser.avatar}
+        name={currentUser.name}
+        size={56}
       />
       <p className="sidebar__username">{currentUser.name}</p>
     </div>

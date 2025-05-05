@@ -72,10 +72,10 @@ function Header({
         <Link to="/profile" className="header__link">
           <div className="header__user-container">
             <p className="header__username">{currentUser.name}</p>
-            <img
-              src={currentUser.avatar}
-              alt={currentUser.avatar}
-              className="header__avatar"
+            <UserAvatar
+              avatar={currentUser.avatar}
+              name={currentUser.name}
+              size={40}
             />
           </div>
         </Link>

@@ -40,6 +40,10 @@
   cursor: pointer;
 }
 
+.modal__delete-btn_hidden {
+  display: none;
+}
+
 .modal__close_type_image {
   background-image: url(../../assets/closebuttonlight.png);
   background-color: transparent;

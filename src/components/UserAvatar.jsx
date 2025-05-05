@@ -1,8 +1,8 @@
-function UserAvatar({ name = "", avatar }) {
+function UserAvatar({ name = "", avatar, size = 40 }) {
   const firstLetter = name.charAt(0).toUpperCase();
   const placeholderStyles = {
-    width: "56px",
-    height: "56px",
+    width: size,
+    height: size,
     borderRadius: "50%",
     backgroundColor: "#cbd5e1",
     display: "flex",
@@ -15,7 +15,7 @@ function UserAvatar({ name = "", avatar }) {
     <img
       src={avatar}
       alt={`${name}'s avatar`}
-      style={{ width: "56px", height: "56px", borderRadius: "50%" }}
+      style={{ width: size, height: size, borderRadius: "50%" }}
     ></img>
   ) : (
     <div style={placeholderStyles}>{firstLetter}</div>
