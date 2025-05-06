@@ -23,7 +23,12 @@ function ClothesSection({
       <ul className="clothes-section__list">
         {clothingItems &&
           clothingItems
-            .filter((item) => currentUser && item.owner._id === currentUser._id)
+            .filter(
+              (item) =>
+                currentUser &&
+                (item.owner._id === currentUser._id ||
+                  item.likes.some((id) => id === currentUser._id))
+            )
             .map((item) => {
               return (
                 <ItemCard
