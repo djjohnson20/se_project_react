@@ -154,7 +154,7 @@ function App() {
       addCardLike(card._id, token)
         .then((updatedCard) => {
           setClothingItems((cards) =>
-            cards.map((item) => (item._id === card._id ? updatedCard : item))
+            cards.map((c) => (c._id === updatedCard._id ? updatedCard : c))
           );
         })
         .catch((err) => console.log(err));
@@ -162,7 +162,7 @@ function App() {
       removeCardLike(card._id, token)
         .then((updatedCard) => {
           setClothingItems((cards) =>
-            cards.map((item) => (item._id === card._id ? updatedCard : item))
+            cards.map((c) => (c._id === updatedCard._id ? updatedCard : c))
           );
         })
         .catch((err) => console.log(err));

@@ -10,7 +10,6 @@ function Profile({
   handleEditProfile,
   onCardLike,
 }) {
-  console.log("Profile clothingItems:", clothingItems);
   return (
     <div className="profile">
       <section className="profile__sidebar">

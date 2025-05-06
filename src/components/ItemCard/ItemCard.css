@@ -9,8 +9,19 @@
   cursor: pointer;
 }
 
-.card__name {
+.card__name-container {
   position: absolute;
+  top: 15px;
+  left: 12px;
+  right: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  z-index: 1;
+}
+
+.card__name {
   top: 15px;
   margin: 0;
   font-family: "Cabinet Grotesk", sans-serif;
@@ -28,7 +39,6 @@
 }
 
 .card__like-button {
-  position: absolute;
   bottom: 12px;
   right: 12px;
   width: 21px;
@@ -37,6 +47,10 @@
   padding: 0;
   cursor: pointer;
   transition: opacity 0.3s ease;
+  background-image: url(../../assets/unlikedbutton.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: transparent;
 }
 
 .card__like-button:hover {

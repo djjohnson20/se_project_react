@@ -10,7 +10,6 @@ function ClothesSection({
   handleAddClick,
   onCardLike,
 }) {
-  console.log("ClothesSection clothingItems:", clothingItems);
   const { currentUser } = useContext(CurrentUserContext);
 
   return (
@@ -24,7 +23,7 @@ function ClothesSection({
       <ul className="clothes-section__list">
         {clothingItems &&
           clothingItems
-            .filter((item) => item.owner._id === currentUser._id)
+            .filter((item) => currentUser && item.owner._id === currentUser._id)
             .map((item) => {
               return (
                 <ItemCard
