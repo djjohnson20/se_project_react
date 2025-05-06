@@ -20,7 +20,7 @@ function Header({
     day: "numeric",
   });
 
-  const currentUser = useContext(CurrentUserContext);
+  const { currentUser } = useContext(CurrentUserContext);
 
   return (
     <header className="header">

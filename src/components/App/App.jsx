@@ -17,7 +17,7 @@ import { signin, signup, checkToken, checkRes } from "../../utils/auth";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
-import { getItems, addItem, deleteCard } from "../../utils/api";
+import { getItems, addItem, deleteCard, updateProfile } from "../../utils/api";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -67,11 +67,16 @@ function App() {
   const handleAddItemModalSubmit = ({ name, imageUrl, weather }) => {
     const token = localStorage.getItem("jwt");
     addItem({ name, imageUrl, weather }, token)
-      .then((newItem) => {
-        setClothingItems([newItem, ...clothingItems]);
+      .then(() => {
+        return getItems();
+      })
+      .then((items) => {
+        setClothingItems(items);
         closeActiveModal();
       })
-      .catch(console.error);
+      .catch((error) => {
+        console.error("Error adding item:", error);
+      });
   };
 
   const handleCardDelete = (itemId) => {
@@ -122,13 +127,27 @@ function App() {
     setCurrentUser({});
   };
 
-  useEffect(() => {
-    getItems()
-      .then((data) => {
-        setClothingItems(data);
+  const handleEditProfile = ({ name, avatar }) => {
+    const token = localStorage.getItem("jwt");
+    updateProfile({ name, avatar }, token)
+      .then((res) => {
+        setCurrentUser(res);
+        closeActiveModal();
       })
-      .catch(console.error);
-  }, []);
+      .catch((error) => {
+        console.error("Error updating profile:", error);
+      });
+  };
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      getItems()
+        .then((items) => {
+          setClothingItems(items);
+        })
+        .catch(console.error);
+    }
+  }, [isLoggedIn]);
 
   useEffect(() => {
     getWeather(coordinates, APIkey)
@@ -156,7 +175,7 @@ function App() {
   }, []);
 
   return (
-    <CurrentUserContext.Provider value={currentUser}>
+    <CurrentUserContext.Provider value={{ currentUser, setCurrentUser }}>
       <CurrentTemperatureUnitContext.Provider
         value={{ currentTemperatureUnit, handleToggleSwitchChange }}
       >
@@ -169,6 +188,7 @@ function App() {
               handleLoginClick={handleLoginClick}
               isLoggedIn={isLoggedIn}
               handleLogout={handleLogout}
+              currentUser={currentUser}
             />
             <Routes>
               <Route
@@ -189,6 +209,7 @@ function App() {
                       clothingItems={clothingItems}
                       handleCardClick={handleCardClick}
                       handleAddClick={handleAddClick}
+                      handleEditProfile={handleEditProfile}
                     />
                   </ProtectedRoute>
                 }

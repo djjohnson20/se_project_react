@@ -26,5 +26,15 @@ function deleteCard(cardId, token) {
     },
   }).then(checkRes);
 }
+function updateProfile({ name, avatar }, token) {
+  return fetch(`${baseUrl}/users/me`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({ name, avatar }),
+  }).then(checkRes);
+}
 
-export { checkRes, getItems, addItem, deleteCard };
+export { checkRes, getItems, addItem, deleteCard, updateProfile };
