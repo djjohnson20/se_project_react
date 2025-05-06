@@ -26,3 +26,23 @@
 .card__image {
   width: 100%;
 }
+
+.card__like-button {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  width: 21px;
+  height: 19px;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.card__like-button:hover {
+  opacity: 0.5;
+}
+
+.card__like-button_active {
+  background-image: url(../../assets/likedbutton.svg);
+}

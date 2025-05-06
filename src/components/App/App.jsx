@@ -17,7 +17,14 @@ import { signin, signup, checkToken, checkRes } from "../../utils/auth";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
-import { getItems, addItem, deleteCard, updateProfile } from "../../utils/api";
+import {
+  getItems,
+  addItem,
+  deleteCard,
+  updateProfile,
+  addCardLike,
+  removeCardLike,
+} from "../../utils/api";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -139,6 +146,29 @@ function App() {
       });
   };
 
+  const handleCardLike = (card) => {
+    const isLiked = card.likes.some((id) => id === currentUser._id);
+    const token = localStorage.getItem("jwt");
+
+    if (!isLiked) {
+      addCardLike(card._id, token)
+        .then((updatedCard) => {
+          setClothingItems((cards) =>
+            cards.map((item) => (item._id === card._id ? updatedCard : item))
+          );
+        })
+        .catch((err) => console.log(err));
+    } else {
+      removeCardLike(card._id, token)
+        .then((updatedCard) => {
+          setClothingItems((cards) =>
+            cards.map((item) => (item._id === card._id ? updatedCard : item))
+          );
+        })
+        .catch((err) => console.log(err));
+    }
+  };
+
   useEffect(() => {
     if (isLoggedIn) {
       getItems()
@@ -170,6 +200,7 @@ function App() {
           console.log("Error checking token:", err);
           localStorage.removeItem("jwt");
           setIsLoggedIn(false);
+          setCurrentUser({});
         });
     }
   }, []);
@@ -198,6 +229,8 @@ function App() {
                     weatherData={weatherData}
                     handleCardClick={handleCardClick}
                     clothingItems={clothingItems}
+                    onCardLike={handleCardLike}
+                    currentUser={currentUser}
                   />
                 }
               />
@@ -210,6 +243,9 @@ function App() {
                       handleCardClick={handleCardClick}
                       handleAddClick={handleAddClick}
                       handleEditProfile={handleEditProfile}
+                      handleLogout={handleLogout}
+                      currentUser={currentUser}
+                      onCardLike={handleCardLike}
                     />
                   </ProtectedRoute>
                 }

@@ -1,29 +1,16 @@
-import { useContext, useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useContext, useState } from "react";
 
 import "./SideBar.css";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import EditProfileModal from "../EditProfileModal/EditProfileModal";
 import UserAvatar from "../UserAvatar";
 
-function SideBar() {
+function SideBar({ handleLogout, handleEditProfile }) {
   const [isEditProfileModalOpen, setIsEditProfileModalOpen] = useState(false);
   const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    if (currentUser === null) {
-      navigate("/");
-    }
-  }, [currentUser, navigate]);
 
   const handleEditProfileClick = () => {
     setIsEditProfileModalOpen(true);
-  };
-
-  const handleLogoutClick = () => {
-    setCurrentUser(null);
-    navigate("/");
   };
 
   return currentUser ? (
@@ -40,14 +27,15 @@ function SideBar() {
         <button className="sidebar__edit-btn" onClick={handleEditProfileClick}>
           Change profile data
         </button>
-        <button className="sidebar__logout" onClick={handleLogoutClick}>
+        <button className="sidebar__logout" onClick={handleLogout}>
           Log out
         </button>
       </div>
       <EditProfileModal
         isOpen={isEditProfileModalOpen}
         onClose={() => setIsEditProfileModalOpen(false)}
-        onSubmit={() => {
+        onSubmit={(newProfileData) => {
+          handleEditProfile(newProfileData);
           setIsEditProfileModalOpen(false);
         }}
         currentUser={currentUser}

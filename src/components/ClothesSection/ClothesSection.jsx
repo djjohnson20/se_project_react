@@ -4,7 +4,13 @@ import ItemCard from "../ItemCard/ItemCard";
 import "./ClothesSection.css";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 
-function ClothesSection({ clothingItems, handleCardClick, handleAddClick }) {
+function ClothesSection({
+  clothingItems,
+  handleCardClick,
+  handleAddClick,
+  onCardLike,
+}) {
+  console.log("ClothesSection clothingItems:", clothingItems);
   const { currentUser } = useContext(CurrentUserContext);
 
   return (
@@ -25,6 +31,8 @@ function ClothesSection({ clothingItems, handleCardClick, handleAddClick }) {
                   key={item._id}
                   item={item}
                   onCardClick={handleCardClick}
+                  currentUser={currentUser}
+                  onCardLike={onCardLike}
                 />
               );
             })}

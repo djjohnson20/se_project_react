@@ -1,9 +1,31 @@
 import "./ItemCard.css";
+import likeButtonInactive from "../../assets/unlikedbutton.svg";
+import likeButtonActive from "../../assets/likedbutton.svg";
 
-function ItemCard({ item, onCardClick }) {
+function ItemCard({ item, onCardClick, onCardLike, currentUser }) {
+  console.log("ItemCard props:", {
+    item,
+    currentUser,
+    "has onCardLike": !!onCardLike,
+  });
   const handleCardClick = () => {
     onCardClick(item);
   };
+
+  const handleLikeClick = () => {
+    console.log("Like button clicked");
+    console.log("item.likes:", item.likes);
+    onCardLike(item);
+  };
+
+  const isLiked = item.likes
+    ? item.likes.some((id) => id === currentUser?._id)
+    : false;
+
+  console.log("Debug values:", {
+    "currentUser?._id": currentUser?._id,
+    "item.likes": item.likes,
+  });
 
   return (
     <li className="card">
@@ -14,6 +36,14 @@ function ItemCard({ item, onCardClick }) {
         src={item.imageUrl}
         alt={item.name}
       />
+      {currentUser?._id && (
+        <img
+          src={isLiked ? likeButtonActive : likeButtonInactive}
+          className="card__like-button"
+          onClick={handleLikeClick}
+          alt="like button"
+        />
+      )}
     </li>
   );
 }

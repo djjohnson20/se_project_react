@@ -37,4 +37,30 @@ function updateProfile({ name, avatar }, token) {
   }).then(checkRes);
 }
 
-export { checkRes, getItems, addItem, deleteCard, updateProfile };
+function addCardLike(cardId, token) {
+  return fetch(`${baseUrl}/items/${cardId}/likes`, {
+    method: "PUT",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }).then(checkRes);
+}
+
+function removeCardLike(cardId, token) {
+  return fetch(`${baseUrl}/items/${cardId}/likes`, {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }).then(checkRes);
+}
+
+export {
+  checkRes,
+  getItems,
+  addItem,
+  deleteCard,
+  updateProfile,
+  addCardLike,
+  removeCardLike,
+};
