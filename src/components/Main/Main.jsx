@@ -10,6 +10,7 @@ function Main({
   clothingItems,
   currentUser,
   onCardLike,
+  unlikedItems,
 }) {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
 
@@ -34,6 +35,7 @@ function Main({
                   onCardClick={handleCardClick}
                   currentUser={currentUser}
                   onCardLike={onCardLike}
+                  unlikedItems={unlikedItems}
                 />
               );
             })}

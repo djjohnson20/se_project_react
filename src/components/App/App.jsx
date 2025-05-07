@@ -41,6 +41,7 @@ function App() {
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
+  const [unlikedItems, setUnlikedItems] = useState([]);
 
   const handleToggleSwitchChange = () => {
     setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
@@ -156,6 +157,10 @@ function App() {
           setClothingItems((cards) =>
             cards.map((c) => (c._id === updatedCard._id ? updatedCard : c))
           );
+          setSelectedCard((prevCard) =>
+            prevCard._id === updatedCard._id ? updatedCard : prevCard
+          );
+          setUnlikedItems((items) => items.filter((id) => id !== card._id));
         })
         .catch((err) => console.log(err));
     } else {
@@ -164,6 +169,10 @@ function App() {
           setClothingItems((cards) =>
             cards.map((c) => (c._id === updatedCard._id ? updatedCard : c))
           );
+          setSelectedCard((prevCard) =>
+            prevCard._id === updatedCard._id ? updatedCard : prevCard
+          );
+          setUnlikedItems((items) => [...items, card._id]);
         })
         .catch((err) => console.log(err));
     }
@@ -231,6 +240,7 @@ function App() {
                     clothingItems={clothingItems}
                     onCardLike={handleCardLike}
                     currentUser={currentUser}
+                    unlikedItems={unlikedItems}
                   />
                 }
               />
@@ -246,6 +256,7 @@ function App() {
                       handleLogout={handleLogout}
                       currentUser={currentUser}
                       onCardLike={handleCardLike}
+                      unlikedItems={unlikedItems}
                     />
                   </ProtectedRoute>
                 }

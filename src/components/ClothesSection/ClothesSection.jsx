@@ -9,6 +9,7 @@ function ClothesSection({
   handleCardClick,
   handleAddClick,
   onCardLike,
+  unlikedItems,
 }) {
   const { currentUser } = useContext(CurrentUserContext);
 
@@ -27,7 +28,8 @@ function ClothesSection({
               (item) =>
                 currentUser &&
                 (item.owner._id === currentUser._id ||
-                  item.likes.some((id) => id === currentUser._id))
+                  item.likes.some((id) => id === currentUser._id) ||
+                  unlikedItems.includes(item._id))
             )
             .map((item) => {
               return (
