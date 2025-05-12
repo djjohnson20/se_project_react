@@ -1,14 +1,6 @@
-const baseUrl = "http://localhost:3001";
+import { checkRes } from "./api";
 
-function checkRes(res) {
-  return res.json().then((data) => {
-    if (res.ok) {
-      return data;
-    } else {
-      return Promise.reject(data);
-    }
-  });
-}
+const baseUrl = "http://localhost:3001";
 
 function signup({ name, avatarUrl, email, password }) {
   return fetch(`${baseUrl}/signup`, {
@@ -45,4 +37,4 @@ function checkToken(token) {
   }).then(checkRes);
 }
 
-export { signup, signin, checkToken, checkRes };
+export { signup, signin, checkToken };

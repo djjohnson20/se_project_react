@@ -55,12 +55,12 @@ function RegisterModal({ onClose, isOpen, onRegister, onLogin }) {
       isOpen={isOpen}
       onSubmit={handleSubmit}
     >
-      <label htmlFor="email" className="modal__label">
+      <label htmlFor="register-email" className="modal__label">
         Email{" "}
         <input
           type="email"
           className="modal__input"
-          id="email"
+          id="register-email"
           placeholder="Email"
           onChange={handleEmailChange}
           value={email}
@@ -68,12 +68,12 @@ function RegisterModal({ onClose, isOpen, onRegister, onLogin }) {
           maxLength="50"
         />
       </label>
-      <label htmlFor="password" className="modal__label">
+      <label htmlFor="register-password" className="modal__label">
         Password{" "}
         <input
           type="password"
           className="modal__input"
-          id="password"
+          id="register-password"
           placeholder="Password"
           onChange={handlePasswordChange}
           value={password}
@@ -81,12 +81,12 @@ function RegisterModal({ onClose, isOpen, onRegister, onLogin }) {
           minLength="8"
         />
       </label>
-      <label htmlFor="name" className="modal__label">
+      <label htmlFor="register-name" className="modal__label">
         Name{" "}
         <input
           type="text"
           className="modal__input"
-          id="name"
+          id="register-name"
           placeholder="Name"
           onChange={handleNameChange}
           value={name}

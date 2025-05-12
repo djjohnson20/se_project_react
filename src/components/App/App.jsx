@@ -13,7 +13,7 @@ import RegisterModal from "../RegisterModal/RegisterModal";
 import LoginModal from "../LoginModal/LoginModal";
 import Profile from "../Profile/Profile";
 import Footer from "../Footer/Footer";
-import { signin, signup, checkToken, checkRes } from "../../utils/auth";
+import { signin, signup, checkToken } from "../../utils/auth";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
@@ -75,11 +75,9 @@ function App() {
   const handleAddItemModalSubmit = ({ name, imageUrl, weather }) => {
     const token = localStorage.getItem("jwt");
     addItem({ name, imageUrl, weather }, token)
-      .then(() => {
-        return getItems();
-      })
-      .then((items) => {
-        setClothingItems(items);
+      .then((item) => {
+        console.log("New item received:", item);
+        setClothingItems((prevItems) => [item, ...prevItems]);
         closeActiveModal();
       })
       .catch((error) => {

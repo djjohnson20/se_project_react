@@ -24,10 +24,12 @@ function ClothesSection({
       <ul className="clothes-section__list">
         {clothingItems &&
           clothingItems
+            .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
             .filter(
               (item) =>
                 currentUser &&
                 (item.owner._id === currentUser._id ||
+                  item.owner === currentUser._id ||
                   item.likes.some((id) => id === currentUser._id) ||
                   unlikedItems.includes(item._id))
             )

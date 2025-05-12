@@ -8,7 +8,6 @@ function Main({
   weatherData,
   handleCardClick,
   clothingItems,
-  currentUser,
   onCardLike,
   unlikedItems,
 }) {
@@ -33,7 +32,6 @@ function Main({
                   key={item._id}
                   item={item}
                   onCardClick={handleCardClick}
-                  currentUser={currentUser}
                   onCardLike={onCardLike}
                   unlikedItems={unlikedItems}
                 />

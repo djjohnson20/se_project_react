@@ -38,7 +38,6 @@ function SideBar({ handleLogout, handleEditProfile }) {
           handleEditProfile(newProfileData);
           setIsEditProfileModalOpen(false);
         }}
-        currentUser={currentUser}
       />
     </div>
   ) : null;
