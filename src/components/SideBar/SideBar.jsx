@@ -7,7 +7,7 @@ import UserAvatar from "../UserAvatar";
 
 function SideBar({ handleLogout, handleEditProfile }) {
   const [isEditProfileModalOpen, setIsEditProfileModalOpen] = useState(false);
-  const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
+  const { currentUser } = useContext(CurrentUserContext);
 
   const handleEditProfileClick = () => {
     setIsEditProfileModalOpen(true);

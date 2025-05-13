@@ -226,7 +226,6 @@ function App() {
               handleLoginClick={handleLoginClick}
               isLoggedIn={isLoggedIn}
               handleLogout={handleLogout}
-              currentUser={currentUser}
             />
             <Routes>
               <Route
@@ -237,7 +236,6 @@ function App() {
                     handleCardClick={handleCardClick}
                     clothingItems={clothingItems}
                     onCardLike={handleCardLike}
-                    currentUser={currentUser}
                     unlikedItems={unlikedItems}
                   />
                 }
@@ -252,7 +250,6 @@ function App() {
                       handleAddClick={handleAddClick}
                       handleEditProfile={handleEditProfile}
                       handleLogout={handleLogout}
-                      currentUser={currentUser}
                       onCardLike={handleCardLike}
                       unlikedItems={unlikedItems}
                     />
