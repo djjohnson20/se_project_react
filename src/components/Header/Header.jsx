@@ -52,13 +52,6 @@ function Header({
         ) : (
           <>
             <button
-              onClick={handleLogout}
-              type="button"
-              className="header__logout-btn"
-            >
-              Log out
-            </button>
-            <button
               onClick={handleAddClick}
               type="button"
               className="header__add-clothes-btn"
@@ -71,10 +64,10 @@ function Header({
       {isLoggedIn && (
         <Link to="/profile" className="header__link">
           <div className="header__user-container">
-            <p className="header__username">{currentUser.name}</p>
+            <p className="header__username">{currentUser?.name}</p>
             <UserAvatar
-              avatar={currentUser.avatar}
-              name={currentUser.name}
+              avatar={currentUser?.avatar || ""}
+              name={currentUser?.name || "User"}
               size={40}
             />
           </div>

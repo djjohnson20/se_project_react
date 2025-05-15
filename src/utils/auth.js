@@ -1,6 +1,4 @@
-import { checkRes } from "./api";
-
-const baseUrl = "http://localhost:3001";
+import { checkRes, baseUrl } from "./api";
 
 function signup({ name, avatarUrl, email, password }) {
   return fetch(`${baseUrl}/signup`, {

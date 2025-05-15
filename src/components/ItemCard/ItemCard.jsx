@@ -4,7 +4,7 @@ import CurrentUserContext from "../../contexts/CurrentUserContext";
 import "./ItemCard.css";
 
 function ItemCard({ item, onCardClick, onCardLike }) {
-  const currentUser = useContext(CurrentUserContext);
+  const { currentUser } = useContext(CurrentUserContext);
 
   const handleCardClick = () => {
     onCardClick(item);

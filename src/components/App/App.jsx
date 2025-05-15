@@ -76,7 +76,6 @@ function App() {
     const token = localStorage.getItem("jwt");
     addItem({ name, imageUrl, weather }, token)
       .then((item) => {
-        console.log("New item received:", item);
         setClothingItems((prevItems) => [item, ...prevItems]);
         closeActiveModal();
       })
@@ -177,13 +176,11 @@ function App() {
   };
 
   useEffect(() => {
-    if (isLoggedIn) {
-      getItems()
-        .then((items) => {
-          setClothingItems(items);
-        })
-        .catch(console.error);
-    }
+    getItems()
+      .then((items) => {
+        setClothingItems(items);
+      })
+      .catch(console.error);
   }, [isLoggedIn]);
 
   useEffect(() => {

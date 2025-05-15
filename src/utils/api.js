@@ -63,4 +63,5 @@ export {
   updateProfile,
   addCardLike,
   removeCardLike,
+  baseUrl,
 };

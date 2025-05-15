@@ -28,8 +28,7 @@ function ClothesSection({
             .filter(
               (item) =>
                 currentUser &&
-                (item.owner._id === currentUser._id ||
-                  item.owner === currentUser._id ||
+                (currentUser._id === item.owner ||
                   item.likes.some((id) => id === currentUser._id) ||
                   unlikedItems.includes(item._id))
             )
