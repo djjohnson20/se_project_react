@@ -1,4 +1,5 @@
-import { checkRes, baseUrl } from "./api";
+import { checkRes } from "./api";
+import { baseUrl } from "./constants";
 
 function signup({ name, avatarUrl, email, password }) {
   return fetch(`${baseUrl}/signup`, {
